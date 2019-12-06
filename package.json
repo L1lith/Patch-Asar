@@ -1,0 +1,33 @@
+{
+  "name": "patch-asar",
+  "version": "0.5.0",
+  "description": "Patch .asar archives",
+  "main": "source/index.js",
+  "dependencies": {
+    "asar": "^2.0.1",
+    "copy-dir": "^1.2.0",
+    "mkdirp-promise": "^5.0.1",
+    "rimraf": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L1lith/patch-asar.git"
+  },
+  "keywords": [
+    "patch",
+    "asar",
+    "archive",
+    "overwrite",
+    "modify"
+  ],
+  "author": "L1lith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/L1lith/patch-asar/issues"
+  },
+  "homepage": "https://github.com/L1lith/patch-asar#readme"
+}
