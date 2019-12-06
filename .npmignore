@@ -1,0 +1,13 @@
+/dist/
+node_modules/
+.DS_Store
+/test.js
+/testing/
+/docs/
+/docs-source/
+/examples/
+/tests/
+/source/
+
+!/dist/Sandhands-commonjs.min.js
+!/**/.gitkeep
