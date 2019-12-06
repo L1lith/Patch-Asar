@@ -19,7 +19,7 @@ async function executePatches(workingFolder) {
       throw error
     }
     let input = null
-    if (await exists(postExecute))) {
+    if (await exists(postExecute)) {
       input = (await readFile(postExecute)).toString()
     }
     if (typeof output == 'function') output = output(input)
