@@ -6,7 +6,11 @@
   "dependencies": {
     "asar": "^2.0.1",
     "copy-dir": "^1.2.0",
+    "find": "^0.3.0",
+    "fq": "^0.4.1",
     "mkdirp-promise": "^5.0.1",
+    "mz": "^2.7.0",
+    "recursive-search": "^1.0.1",
     "rimraf": "^3.0.0"
   },
   "devDependencies": {},
