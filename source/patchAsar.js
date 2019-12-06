@@ -9,7 +9,8 @@ const {basename, extname, join} = require('path')
 
 async function patchAsar(asarFilePath, patchFolderPatch, options={}) {
   if (typeof options != 'object') throw new Error("Options must be an object or null.")
-  let {outputPath=null, workingDirectory=null} = options || {}
+  let {workingDirectory=null} = options || {}
+  let outputPath = options.outputPath || options.outputFile || null
   if (typeof asarFilePath != 'string' || !asarFilePath.endsWith('.asar') || !(await isFile(asarFilePath))) throw new Error("Invalid Asar File Path")
   if (typeof patchFolderPatch != 'string' || !(await isDirectory(patchFolderPatch))) throw new Error("Invalid Patch Folder Path")
   if (outputPath !== null && (typeof outputPath != 'string' || await isDirectory(outputPath))) throw new Error("Invalid Output File Path")
