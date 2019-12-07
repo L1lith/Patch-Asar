@@ -29,8 +29,8 @@ async function executePatches(workingFolder, patchFolder) {
     if (typeof output == 'string') {
       await rimraf(postExecute)
       await writeFile(postExecute, output)
-      await rimraf(patchToDelete)
     }
+    await rimraf(patchToDelete)
   }
 }
 
