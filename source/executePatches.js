@@ -11,6 +11,7 @@ async function executePatches(workingFolder, patchFolder) {
   for (let i = 0; i < patchesToExecute.length; i++) {
     const patch = patchesToExecute[i]
     const postExecute = join(workingFolder, relative(patchFolder, dirname(patch)), basename(patch, extname(patch)))
+    const patchToDelete = postExecute + '.patch-execute'
     let output
     try {
       output = require(patch)
@@ -25,10 +26,11 @@ async function executePatches(workingFolder, patchFolder) {
     if (typeof output == 'function') output = output(input)
     if (output instanceof Promise) output = await output
     if (typeof output != 'string' && output !== null) throw new Error("The file did not output null or a string")
-    if (output === null) output = ""
-    await rimraf(postExecute)
-    await writeFile(postExecute, output)
-    await rimraf(patch)
+    if (typeof output == 'string') {
+      await rimraf(postExecute)
+      await writeFile(postExecute, output)
+      await rimraf(patchToDelete)
+    }
   }
 }
 
