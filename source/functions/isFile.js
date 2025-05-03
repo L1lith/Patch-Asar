@@ -1,12 +1,5 @@
-const {stat} = require('fs')
+import { stat } from "fs/promises";
 
-function isFile(path) {
-  return new Promise((resolve, reject) => {
-    stat(path, (err, stats) => {
-      if (err) return resolve(false)
-      resolve(stats.isFile())
-    })
-  })
+export default async function isFile(path) {
+  return (await stat(path)).isFile();
 }
-
-module.exports = isFile

@@ -1,6 +1,9 @@
 # Patch Asar
 Using this library you can inject your own files into .asar archives.
 
+## Breaking Change
+I don't know if switching from CommonJS to ESModules will break this library for anyone. If this is an issue for you please open an issue and I'll try to figure out how to build for both (or make a pull request with a proper build system)
+
 ### Basic Usage
 ```js
 const patchAsar = require('patch-asar')

@@ -1,4 +1,4 @@
-const patchAsar = require('./patchAsar')
+import patchAsar from "./patchAsar.js";
+export { default as patchAsar } from "./patchAsar.js";
 
-
-module.exports = Object.assign((...args)=>(patchAsar(...args)), {patchAsar})
+export default patchAsar;

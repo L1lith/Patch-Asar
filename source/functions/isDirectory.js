@@ -1,12 +1,5 @@
-const {stat} = require('fs')
+import { stat } from "fs/promises";
 
-function isDirectory(path) {
-  return new Promise((resolve, reject) => {
-    stat(path, (err, stats) => {
-      if (err) return resolve(false)
-      resolve(stats.isDirectory())
-    })
-  })
+export default async function isDirectory(path) {
+  return (await stat(path)).isDirectory();
 }
-
-module.exports = isDirectory
