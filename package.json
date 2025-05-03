@@ -11,10 +11,6 @@
     "recursive-search": "^1.0.1",
     "rimraf": "^6.0.1"
   },
-  "files": [
-    "!**/test/",
-    "!**/test/**"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
