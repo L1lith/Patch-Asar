@@ -6,7 +6,6 @@
   "bin": "bin/patch-asar",
   "type": "module",
   "dependencies": {
-    "copy-dir": "^1.3.0",
     "fq": "^0.4.1",
     "mkdirp-promise": "^5.0.1",
     "recursive-search": "^1.0.1",

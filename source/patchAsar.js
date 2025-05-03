@@ -4,7 +4,7 @@ import { promisify } from "util";
 import { rimraf } from "rimraf";
 import mkdirp from "mkdirp-promise";
 import asar from "asar";
-import copyDir from "copy-dir";
+import { cp } from "fs/promises";
 import { basename, extname, join } from "path";
 import executePatches from "./executePatches.js";
 
@@ -47,7 +47,7 @@ export default async function patchAsar(
   await rimraf(workingDirectory);
   await mkdirp(workingDirectory);
   await asar.extractAll(asarFilePath, workingDirectory);
-  await copyDir(patchFolderPath, workingDirectory, {});
+  await cp(patchFolderPath, workingDirectory, { recursive: true, force: true });
   await executePatches(workingDirectory, patchFolderPath);
   await rimraf(outputPath);
   await asar.createPackage(workingDirectory, outputPath);
