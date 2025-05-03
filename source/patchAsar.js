@@ -38,7 +38,8 @@ export default async function patchAsar(
   if (workingDirectory !== null && typeof workingDirectory != "string")
     throw new Error("Invalid Working Directory Path");
   if (outputPath === null) outputPath = asarFilePath; // Patch in place
-  if (workingDirectory === null) workingDirectory = join(__dirname, "./build/");
+  if (workingDirectory === null)
+    workingDirectory = join(import.meta.dirname, "./build/");
   workingDirectory = join(
     workingDirectory,
     basename(asarFilePath, extname(asarFilePath))
@@ -46,7 +47,7 @@ export default async function patchAsar(
   await rimraf(workingDirectory);
   await mkdirp(workingDirectory);
   await asar.extractAll(asarFilePath, workingDirectory);
-  await copyDir(patchFolderPath, workingDirectory);
+  await copyDir(patchFolderPath, workingDirectory, {});
   await executePatches(workingDirectory, patchFolderPath);
   await rimraf(outputPath);
   await asar.createPackage(workingDirectory, outputPath);
