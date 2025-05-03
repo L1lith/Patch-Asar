@@ -6,24 +6,22 @@ I don't know if switching from CommonJS to ESModules will break this library for
 
 ### Basic Usage
 ```js
-const patchAsar = require('patch-asar')
-const path = require('path')
+import patchAsar from 'patch-asar'
+import {join} from 'path'
 
-const inputAsar = path.join(__dirname, "input.asar")
-const patchFolder = path.join(__dirname, "patches")
+const inputAsar = join(__dirname, "input.asar")
+const patchFolder = join(__dirname, "patches")
 
-patchAsar(inputAsar, patchFolder).then(()=>{
-	console.log("Successfully Patched .asar archive in place")
-}).catch(error => {
-	console.log(error)
-})
+await patchAsar(inputAsar, patchFolder)
+
+console.log("Successfully Patched .asar archive in place")
 ```
 
 ### Passing Additional Options
 You can supply an object as the third argument to supply additional options.
 ```js
 ...
-await patchAsar(inputAsar, patchFolder, {outputFile: path.join(__dirname, 'output.asar')})
+await patchAsar(inputAsar, patchFolder, {outputFile: join(__dirname, 'output.asar')})
 ...
 ```
 
