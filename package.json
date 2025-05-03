@@ -3,6 +3,7 @@
   "version": "0.5.5",
   "description": "Patch .asar archives",
   "main": "source/index.js",
+  "bin": "bin/patch-asar",
   "dependencies": {
     "asar": "^2.0.1",
     "copy-dir": "^1.2.0",
