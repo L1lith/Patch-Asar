@@ -3,7 +3,7 @@ import { readdir, stat } from "fs/promises";
 
 export default async function findFiles(directory, ...args) {
   let options = {},
-    filterFunction;
+    filterFunction = null;
   if (args.length > 2) {
     throw new Error("Too many args!");
   } else if (args.length > 1) {
