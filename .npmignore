@@ -1,2 +1,6 @@
 **/test/**
 **/test/
+/node_modules/
+/build/
+**/temp/**
+**/temp/
