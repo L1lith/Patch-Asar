@@ -7,9 +7,7 @@
   "type": "module",
   "dependencies": {
     "@electron/asar": "^3.4.1",
-    "fq": "^0.4.1",
     "mkdirp-promise": "^5.0.1",
-    "recursive-search": "^1.0.1",
     "rimraf": "^6.0.1"
   },
   "scripts": {
