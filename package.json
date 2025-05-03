@@ -6,9 +6,7 @@
   "bin": "bin/patch-asar",
   "type": "module",
   "dependencies": {
-    "@electron/asar": "^3.4.1",
-    "mkdirp-promise": "^5.0.1",
-    "rimraf": "^6.0.1"
+    "@electron/asar": "^3.4.1"
   },
   "scripts": {
     "test": "node test/index.js"

@@ -1,8 +1,8 @@
 import { promisify } from "util";
 import { dirname, basename, extname, join, relative } from "path";
-import { rimraf } from "rimraf";
 import { writeFile, readFile } from "fs/promises";
 import findFiles from "./functions/findFiles.js";
+import rimraf from "./functions/rimraf.js";
 
 async function executePatches(workingFolder, patchFolder) {
   // const patchesToExecute = await new Promise((res) => {

@@ -1,12 +1,12 @@
 import isDirectory from "./functions/isDirectory.js";
 import isFile from "./functions/isFile.js";
 import { promisify } from "util";
-import { rimraf } from "rimraf";
-import mkdirp from "mkdirp-promise";
+import mkdirp from "./functions/mkdirp.js";
 import asar from "@electron/asar";
 import { cp } from "fs/promises";
 import { basename, extname, join } from "path";
 import executePatches from "./executePatches.js";
+import rimraf from "./functions/rimraf.js";
 
 export default async function patchAsar(
   asarFilePath,

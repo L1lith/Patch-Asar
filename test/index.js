@@ -1,8 +1,8 @@
 import patchAsar from "../source/index.js";
 import * as childProcess from "child_process";
 import { promisify } from "util";
-import { rimraf } from "rimraf";
-import mkdirp from "mkdirp-promise";
+import rimraf from "../source/functions/rimraf.js";
+import mkdirp from "../source/functions/mkdirp.js";
 import { join } from "path";
 import findFiles from "../source/functions/findFiles.js";
 
