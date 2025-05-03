@@ -1,6 +1,6 @@
 {
   "name": "patch-asar",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Patch .asar archives",
   "main": "source/index.js",
   "bin": "bin/patch-asar",
