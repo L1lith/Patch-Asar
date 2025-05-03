@@ -31,6 +31,9 @@ The output .asar file path. If this option is not provided it will overwrite the
 ##### workingDirectory
 Allows you to specify the directory you would like the library to work in
 
+##### beforeFinishPatching
+This allows you to specify a function to be called after patch-asar is done patching an asar file, but has not written it to the final .asar file yet. You must return a promise (for patch-asar to wait on) or the literal value true (to designate it's a sync function). The input to the function is patch-asar's working directory so you can edit the files within your node.js runtime. This has the added benefit of being able to use your own dependencies compared to .patch-execute files which do not support dependencies.
+
 ### .patch-execute files
 A file ending in .patch-execute will be evaluated as Javascript in order to generate it's contents. The .patch-execute extension will be removed automatically during the build process. It should either export a string, or a function returning a string, or a promise returning a string. If you return a function while theres another file with the same name except without .patch-execute then the contents of the file will be passed in as a string input to your function. This can be very useful in order to generate the contents of the patched file based on the contents of the unpatched file and the code you provide in your .patch-execute file.
 

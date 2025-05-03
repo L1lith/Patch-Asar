@@ -15,8 +15,19 @@ export default async function patchAsar(
 ) {
   if (typeof options != "object")
     throw new Error("Options must be an object or null.");
-  let { workingDirectory = null, keepWorkingDirectory = false } = options || {};
+  let {
+    workingDirectory = null,
+    keepWorkingDirectory = false,
+    beforeFinishPatching = null,
+  } = options || {};
   let outputPath = options.outputPath || options.outputFile || null;
+  if (
+    beforeFinishPatching !== null &&
+    typeof beforeFinishPatching != "function"
+  )
+    throw new Error(
+      "beforeFinishPatching must be a function (that returns true or a promise) or null"
+    );
   if (typeof keepWorkingDirectory != "boolean")
     throw new Error("keepWorkingDirectory must be a boolean");
   if (
@@ -49,6 +60,15 @@ export default async function patchAsar(
   await asar.extractAll(asarFilePath, workingDirectory);
   await cp(patchFolderPath, workingDirectory, { recursive: true, force: true });
   await executePatches(workingDirectory, patchFolderPath);
+  // Allow the user to edit the working directory before completing our patch using an async function
+  if (beforeFinishPatching) {
+    const prom = beforeFinishPatching(workingDirectory);
+    if (!(prom instanceof Promise) && promise !== true) {
+      throw new Error(
+        "Expected a promise from the beforeFinishPatching function or true to designate a finished sync function"
+      );
+    }
+  }
   await rimraf(outputPath);
   await asar.createPackage(workingDirectory, outputPath);
   if (keepWorkingDirectory === false) await rimraf(workingDirectory);
